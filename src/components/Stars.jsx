@@ -1,0 +1,1 @@
+export default function Stars({value,onChange,label}){return <div className="stars" role="radiogroup" aria-label={label}>{[1,2,3,4,5].map(n=><button type="button" key={n} className={n<=value?'star active':'star'} onClick={()=>onChange(n)} aria-label={`${n} stars`}>★</button>)}<output>{value}/5</output></div>}

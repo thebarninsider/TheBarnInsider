@@ -1,0 +1,2 @@
+import {Navigate,useLocation} from 'react-router-dom';import {useApp} from '../context/AppContext.jsx';
+export default function ProtectedRoute({children,admin=false}){const {currentUser,isAdmin,loading}=useApp(),loc=useLocation();if(loading)return <section className="page container"><div className="empty">Loading your account…</div></section>;if(!currentUser)return <Navigate to={`/signup?next=${encodeURIComponent(loc.pathname)}`} replace/>;if(admin&&!isAdmin)return <Navigate to="/account" replace/>;return children}
